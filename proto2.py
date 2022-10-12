@@ -1,4 +1,5 @@
-# this module is to test OCR 
+# this module is to test OCR
+# now the testing begins here. We need to work here. 
 import pdf2image
 import pytesseract
 from pytesseract import Output, TesseractError
