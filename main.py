@@ -84,7 +84,7 @@ def graph(file):
 
 
 #storeExcel(fileName)
-findEmpty(fileName)
+#findEmpty(fileName)
 #report(fileName)
 #readTyped(fileName)
-graph(fileName)
+#graph(fileName)
