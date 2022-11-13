@@ -30,9 +30,11 @@ def storeExcel(file):
     # convert into dataframe
     df = pd.DataFrame(data= readTyped(file), index= [1])
 
-    # convert into excel
-    df.to_excel('out.xlsx',index= False)
+    # convert into csv file with appending mode
+    df.to_csv('out1.csv',index= False, mode = 'a')
 
+    # convert into xlsx
+    #df.to_excel('out.xlsx', index=False)
 
 
 # to find the empty / unfilled boxes
@@ -83,7 +85,7 @@ def graph(file):
 
 
 
-#storeExcel(fileName)
+storeExcel(fileName)
 #findEmpty(fileName)
 #report(fileName)
 #readTyped(fileName)
