@@ -1,10 +1,12 @@
 from fileinput import filename
-from tkinter import W
+#from tkinter import W
 from PyPDF2 import PdfReader
 # import csv
 from collections import Counter
 import pandas as pd
 import matplotlib.pyplot as plt
+
+from tkinter.messagebox import showinfo
 
 # object to store uploaded file name
 # this will be changed as the code has to detect
@@ -42,15 +44,22 @@ def storeExcel(file):
 # later we can give a pop about these lists that these entries are empty
 def findEmpty(file):
     emptyPlaces = []
+    text = "\n \n"
 
     for categories, detail in readTyped(file).items():
         # if detail is empty
         if detail == None:
             emptyPlaces.append(categories)
+
+    # convert above list into a presentable paragraph
+    msg = text.join(emptyPlaces)
     
     # returns the list of unfilled categories
     #return emptyPlaces
-    print (emptyPlaces)
+    #print (emptyPlaces)
+
+    # a dialog box consisting of empty entries
+    showinfo(title="Empty entries", message= msg)
 
 # function to send unfilled stats
 def report(file):
@@ -85,8 +94,8 @@ def graph(file):
 
 
 
-storeExcel(fileName)
-#findEmpty(fileName)
+#storeExcel(fileName)
+findEmpty(fileName)
 #report(fileName)
 #readTyped(fileName)
 #graph(fileName)
