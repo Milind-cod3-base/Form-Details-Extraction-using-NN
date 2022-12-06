@@ -74,7 +74,7 @@ def findEmpty(file):
     #print (emptyPlaces)
 
     # a dialog box consisting of empty entries
-    showinfo(title="Empty entries", message= msg)
+    #showinfo(title="Empty entries", message= msg)
 
 # function to send unfilled stats
 def report(file):
