@@ -8,12 +8,26 @@ import matplotlib.pyplot as plt
 
 from tkinter.messagebox import showinfo
 
+from kivymd.app import MDApp
+from kivy.uix.screenmanager import Screen, ScreenManager
+
+
 # object to store uploaded file name
 # this will be changed as the code has to detect
 # the uploaded file and find the name of the file.
 fileName = "thesis_form.pdf"
 
+class MainWindow(Screen):
+    pass
 
+class StatsWindow(Screen):
+    pass
+
+class DetailsWindow(Screen):
+    pass
+
+class ManualWindow(Screen):
+    pass
 
 # this only reads the typed inputs
 # returns dictionary of categories and entries
