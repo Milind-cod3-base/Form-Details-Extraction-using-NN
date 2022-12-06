@@ -1,0 +1,40 @@
+ScreenManager:
+
+    MainWindow:
+    StatsWindow:
+    DetailsWindow:
+    ManualWindow:
+
+
+
+<MainWindow>:
+    # setting screen parameters
+    name: "main"
+    id: main
+
+    # setting ids for buttons
+    # uploadHand: uploadHand
+    # uploadDigi: uploadDigi
+    # stats: stats
+    # details: details
+
+    ScrollView:
+
+        do_scroll_y: True
+
+        MDFloatLayout:
+            md_bg_color: rgba(0,0,45,255)
+            size_hint_y: None
+            pos_hint: {"center_x":0.5,"center_y":0.5}
+            height: dp(800)
+            width: dp(800)
+            MDCard: #card to hold components
+                orientation: "vertical"
+                padding: "10dp"
+                spacing: "5dp"
+                pos_hint: {"center_x":0.5,"center_y":0.9}
+                md_bg_color: rgba(200,200,210,255)
+                radius:(20,20,20,20)
+                size_hint: 0.9,0.10
+                elevation: 6
+
