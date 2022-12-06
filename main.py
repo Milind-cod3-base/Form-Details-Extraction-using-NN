@@ -115,6 +115,19 @@ def graph(file):
 #readTyped(fileName)
 #graph(fileName)
 
+sm =  ScreenManager()
+
+screens = [MainWindow(name="mainW"),
+           StatsWindow(name="statsW"),
+           DetailsWindow(name="detailW"),
+           ManualWindow(name="manualW")
+           ]
+
+
+for i in screens:
+    sm.add_widget(i)
+
+    
 class MyApp(MDApp):
 
     def build(self):
