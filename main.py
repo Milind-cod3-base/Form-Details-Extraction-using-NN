@@ -6,10 +6,11 @@ from collections import Counter
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from tkinter.messagebox import showinfo
+#from tkinter.messagebox import showinfo
 
 from kivymd.app import MDApp
 from kivy.uix.screenmanager import Screen, ScreenManager
+from kivy.lang import Builder
 
 
 # object to store uploaded file name
@@ -109,7 +110,16 @@ def graph(file):
 
 
 #storeExcel(fileName)
-findEmpty(fileName)
+#findEmpty(fileName)
 #report(fileName)
 #readTyped(fileName)
 #graph(fileName)
+
+class MyApp(MDApp):
+
+    def build(self):
+        self.theme_cls.theme_style = "Light"
+        return Builder.load_file("my.kv")
+
+if __name__ == "__main__":
+    MyApp().run()
