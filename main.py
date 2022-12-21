@@ -168,6 +168,7 @@ class MyApp(MDApp):
 
 if __name__ == "__main__":
     graph(fileName)
+    storeExcel(fileName)
     MyApp().run()
     
     #print(findEmpty(fileName))
