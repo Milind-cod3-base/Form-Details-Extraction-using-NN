@@ -96,7 +96,7 @@ ScreenManager:
                         root.manager.transition.direction= "left"
 
                 MDRoundFlatIconButton: #cross referencing the user credentionals
-                    text: 'Check filled details'
+                    text: 'Check unfilled areas'
                     icon: 'database-check'
                     icon_color: rgba(0,0,45,255)
                     text_color: rgba(0,0,45,255)
@@ -104,7 +104,7 @@ ScreenManager:
                     font_size: 18
                     line_color: rgba(0,0,45,255)
                     on_release:
-                        root.manager.current = 'statsW'
+                        root.manager.current = 'detailW'
                         root.manager.transition.direction= "left"
                     
 
@@ -112,6 +112,7 @@ ScreenManager:
     # setting screen parameters
     name: "statsW"
     id: statsW
+    #result:result
 
 
 
@@ -136,22 +137,29 @@ ScreenManager:
                 icon: "home"
                 #icon_color: rgba(255,255,2555,255)
                 #text_color: rgba(0,0,45,255)
-                pos_hint: {"center_x":0.5,"center_y":0.9}
+                pos_hint: {"center_x":0.1,"center_y":0.9}
                 #font_size: 18
                 #line_color: rgba(0,0,45,255)
                 on_release:
                     root.manager.current = 'mainW'
                     root.manager.transition.direction= "left"
 
-            MDCard: #card to hold components
-                orientation: "vertical"
-                padding: "10dp"
-                spacing: "5dp"
+            # MDCard: #card to hold components
+            #     id: result
+            #     orientation: "vertical"
+            #     padding: "10dp"
+            #     spacing: "5dp"
+            #     pos_hint: {"center_x":0.5,"center_y":0.5}
+            #     md_bg_color: rgba(200,200,210,255)
+            #     radius:(20,20,20,20)
+            #     size_hint: 0.5,0.7
+            #     elevation: 6
+            #     #Image: 
+            Image:
+                id: output
+                source: 'D:\projecct\Form-Details-Extraction-using-NN\output_graph.png'
                 pos_hint: {"center_x":0.5,"center_y":0.5}
-                md_bg_color: rgba(200,200,210,255)
-                radius:(20,20,20,20)
-                size_hint: 0.5,0.7
-                elevation: 6
+                
 
 
 
@@ -197,6 +205,12 @@ ScreenManager:
                 radius:(20,20,20,20)
                 size_hint: 0.5,0.7
                 elevation: 6
+
+                MDLabel:
+                    text: root.show()
+
+
+            
 
      
 <ManualWindow>:

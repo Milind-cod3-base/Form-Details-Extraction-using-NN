@@ -6,12 +6,12 @@ from collections import Counter
 import pandas as pd
 import matplotlib.pyplot as plt
 
-#from tkinter.messagebox import showinfo
+from tkinter.messagebox import showinfo
 
 from kivymd.app import MDApp
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.lang import Builder
-
+from kivy.uix.image import Image
 
 # object to store uploaded file name
 # this will be changed as the code has to detect
@@ -23,9 +23,12 @@ class MainWindow(Screen):
 
 class StatsWindow(Screen):
     pass
+        
 
 class DetailsWindow(Screen):
-    pass
+    def show(self):
+        return findEmpty(fileName)
+        
 
 class ManualWindow(Screen):
     pass
@@ -75,7 +78,7 @@ def findEmpty(file):
 
     # a dialog box consisting of empty entries
     #showinfo(title="Empty entries", message= msg)
-
+    return msg
 # function to send unfilled stats
 def report(file):
     # total entry spaces in form
@@ -103,10 +106,10 @@ def report(file):
 # function to print graph of filled and unfilled
 def graph(file):
     label = ['Filled', 'Blank']
-    plt.pie(report(file), labels= label)
+    plt.pie(report(file), labels= label, autopct= '%1.0f%%')
     plt.title('Form Statistics')
-    plt.show()
-
+    #plt.show()
+    plt.savefig('D:\projecct\Form-Details-Extraction-using-NN\output_graph.png')
 
 
 #storeExcel(fileName)
@@ -135,6 +138,8 @@ class MyApp(MDApp):
         return Builder.load_file("my.kv")
 
 if __name__ == "__main__":
+    
     MyApp().run()
-    # findEmpty(fileName)
-    #graph(fileName)
+    graph(fileName)
+    #print(findEmpty(fileName))
+    
