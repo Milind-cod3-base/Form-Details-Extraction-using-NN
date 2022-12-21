@@ -207,6 +207,8 @@ def calculate_results(y_true, y_pred):
 
 
 
+
+
 reconstructed_model = keras.models.load_model("my_h5_model-1.h5", custom_objects={"CTCLayer": CTCLayer})
 
 np.random.seed(42)
@@ -222,17 +224,16 @@ def get_image_paths_and_labels1(dir1_path):
   return paths1, corrected_samples1
 
 
-
-paths, samples = get_image_paths_and_labels1(dir1_path)
-
-
-a = HandAI(name=123)
-test_ds = a.prepare_dataset(paths, samples)
-
-preds = reconstructed_model.predict(test_ds)
+def runAI():
+    paths, samples = get_image_paths_and_labels1(dir1_path)
 
 
-preds_text = decode_batch_predictions(preds)
+    a = HandAI(name=123)
+    test_ds = a.prepare_dataset(paths, samples)
+
+    preds = reconstructed_model.predict(test_ds)
 
 
-#print(preds_text)
+    preds_text = decode_batch_predictions(preds)
+
+    return preds_text

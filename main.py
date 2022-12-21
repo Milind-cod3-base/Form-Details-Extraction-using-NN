@@ -136,3 +136,5 @@ class MyApp(MDApp):
 
 if __name__ == "__main__":
     MyApp().run()
+    # findEmpty(fileName)
+    #graph(fileName)
