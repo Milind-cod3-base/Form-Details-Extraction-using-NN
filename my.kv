@@ -49,6 +49,9 @@ ScreenManager:
                     pos_hint: {"center_x":.5,"center_y":0.8}
                     font_size: 18
                     line_color: rgba(0,0,45,255)
+                    on_release:
+                        root.manager.transition.direction= "left"
+                        root.open_file_manager()
 
 
             # MDCard: #card to hold components

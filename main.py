@@ -12,14 +12,42 @@ from kivymd.app import MDApp
 from kivy.uix.screenmanager import Screen, ScreenManager
 from kivy.lang import Builder
 from kivy.uix.image import Image
+from kivymd.uix.filemanager import MDFileManager
+
+import tempData
 
 # object to store uploaded file name
 # this will be changed as the code has to detect
 # the uploaded file and find the name of the file.
-fileName = "thesis_form.pdf"
+fileName = tempData.read()
 
-class MainWindow(Screen):
-    pass
+class MainWindow(Screen, MDApp):
+    def __init__(self, **kw):
+        super().__init__(**kw)
+        self.file_manager_obj = MDFileManager(
+            select_path= self.select_path ,   # method of which window will open first
+            exit_manager= self.exit_manager, # method to exit the file manager
+            preview=True
+
+        )
+
+    def open_file_manager(self):
+        # opening file manager
+        #self.file_manager_obj_main.show('/')
+        self.file_manager_obj.show("D:\projecct")
+    
+    # gets the path of the file
+    def select_path(self, path):
+        
+        tempData.save(path)
+        
+        #print(path)
+        
+        self.exit_manager_main()
+        
+
+    def exit_manager(self):
+        self.file_manager_obj.close()
 
 class StatsWindow(Screen):
     pass
@@ -79,6 +107,7 @@ def findEmpty(file):
     # a dialog box consisting of empty entries
     #showinfo(title="Empty entries", message= msg)
     return msg
+
 # function to send unfilled stats
 def report(file):
     # total entry spaces in form
@@ -138,8 +167,8 @@ class MyApp(MDApp):
         return Builder.load_file("my.kv")
 
 if __name__ == "__main__":
-    
-    MyApp().run()
     graph(fileName)
+    MyApp().run()
+    
     #print(findEmpty(fileName))
     
