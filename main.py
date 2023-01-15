@@ -20,8 +20,12 @@ import tempData
 # this will be changed as the code has to detect
 # the uploaded file and find the name of the file.
 fileName = tempData.read()
+# fileName = ""
 
 class MainWindow(Screen, MDApp):
+
+    global fileName
+
     def __init__(self, **kw):
         super().__init__(**kw)
         self.file_manager_obj = MDFileManager(
@@ -38,6 +42,9 @@ class MainWindow(Screen, MDApp):
     
     # gets the path of the file
     def select_path(self, path):
+        # global fileName
+
+        # fileName = path
         
         tempData.save(path)
         
