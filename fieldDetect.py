@@ -2,6 +2,11 @@
 This module detects the field entry spaces for the Neural network
 to take it is an input.
 
+Make a function which gives the read out regions to the neural network,
+in a sequential ways, and store the output into the csv file in the 
+sequence.
+
+Question: How to store the output of the neural network? and store it inside the csv
 """
 
 import cv2
@@ -27,18 +32,18 @@ topic_summary =130, 1230, 1225, 130
 # form_j = '/content/jomon.png'
 
 # read the input form
-input_form = tempData.read()
+#input_form = tempData.read()
+input_form = 'D:\projecct\Form-Details-Extraction-using-NN\Scanned_Forms\dharmes.png'
 
-def box(field, form):
+# this function gives the exact location of the data entry
+# by the user next to its field
+def crop_save(field, form, save_path):
   p1, p2, a1, a2 = field
   image = cv2.imread(form)
-  image_copy = image.copy()
-  image_copy = cv2.cvtColor(image_copy, cv2.COLOR_BGR2GRAY)
+  #image_copy = image.copy()
+  #image_copy = cv2.cvtColor(image_copy, cv2.COLOR_BGR2GRAY)
   x1, y1 = p1, p2
   x2, y2 = x1 + a1, y1 + a2
-  cv2.rectangle(image, (x1, y1), (x2, y2), (0, 0, 255), 5)
-  cv2.imshow(image)
-  cv2.waitKey(0)
 
-
-box(field= thesis_title, form= input_form)
+  cropped_image = image[y1:y2, x1:x2]
+  cv2.imwrite(save_path, cropped_image)
